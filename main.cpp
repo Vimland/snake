@@ -7,7 +7,6 @@
 int main()
 {
     using namespace std;
-
     struct termios old_tio, new_tio;
     unsigned char c;
 
@@ -53,6 +52,6 @@ int main()
     GameLogic snake(10);  
     snake.updateBoard();
     snake.paint();
-    snake.newApple();
     return 0;
+
 }
