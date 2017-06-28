@@ -1,4 +1,5 @@
 #include "UserInput.h"
+#include <ncurses.h>
 std::condition_variable cv;
 
 using namespace std;
@@ -9,7 +10,11 @@ UserInput::UserInput(){
 void UserInput::getUserInput() {
     using namespace std;
     struct termios old_tio, new_tio;
-    unsigned char c;
+    WINDOW *w;
+    w = initscr();
+    nodelay(w, true);
+    noecho();
+    char c;
 
     /* get the terminal settings for stdin */
     tcgetattr(STDIN_FILENO,&old_tio);
@@ -23,8 +28,8 @@ void UserInput::getUserInput() {
     /* set the new settings immediately */
     tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
 
-        c=getchar();
-        
+        c=getch();
+                
         switch (c){
         case 'w':
             dir = UP;
@@ -42,26 +47,10 @@ void UserInput::getUserInput() {
 
     /* restore the former settings */
     tcsetattr(STDIN_FILENO,TCSANOW,&old_tio);
-    cv.notify_one();
+    endwin();
 }
 
-void UserInput::timedUserInput(){
-    std::thread th (spawn());
-    int threadAlive = 0; 
-    std::mutex mtx;
-    std::unique_lock<std::mutex> lck(mtx);
-    while(cv.wait_for(lck, std::chrono::seconds(2)) == std::cv_status::timeout)
-    {
-        threadAlive = 1;
-        ExitThread(th);
-    } 
-    if (threadAlive == 0)
-        th.join(); 
-}
 
-std::thread UserInput::spawn(){
-  return std::thread( [this] { this->getUserInput(); } );
-}
 Direction UserInput::getDirection(){
     return dir;
 }

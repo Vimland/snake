@@ -3,6 +3,7 @@
 #include "UserInput.h"
 #include "enums.h"
 #include <time.h>
+#include <unistd.h>
 
 int main()
 {
@@ -12,14 +13,13 @@ int main()
 	UserInput usr;
 
 // Main Loop    
-//	getUserInput();
     while(1){
-        usr.timedUserInput();
+        usleep(200000);
+        usr.getUserInput();
         std::pair<int, int> nextCoord = snake.getNextStep(usr.getDirection());
         snake.nextStep(nextCoord);
         snake.updateBoard();
         snake.paint();
-        int usleep(2000);
     }
     return 0;
 

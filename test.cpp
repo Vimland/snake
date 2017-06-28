@@ -2,12 +2,16 @@
 #include <ncurses.h>
 
 using namespace std;
+void foo(){
+cout "Hejsan" << endl;
+}
 int main()
 {
-      
-    int ch = getch();
-
-    
-    cout << ch << endl;
+    WINDOW *w;
+    w = initscr();
+    char c;
+    timeout(3000);
+    endwin();
+    cout << c << endl;
     return 0;
 }

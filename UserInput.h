@@ -16,8 +16,6 @@ class UserInput {
         UserInput();
         void getUserInput();
         Direction getDirection();
-        void timedUserInput();
-        std::thread spawn();
     private:
         Direction dir;
 };
