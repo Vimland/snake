@@ -14,13 +14,9 @@ the game with a few turns as possible.
 
 
 * ToDo:
-  - Look over functions
-        - DONE
-  - Rewrite newApple() -> randomCoord()
-        - DONE
-  - Make a small flowchart
-        - DONE
-
+    - Append length to snake when apple is eaten
+    - Insert timer
+    - What happends if apple spawns behind head?
 
 * Flow chart:
     - Call constructor
@@ -37,7 +33,9 @@ the game with a few turns as possible.
 
 
    
-* Functions:
+## Classes
+ 
+ ### GameLogic
   - paint() 
     - Paints the map to stdout
   - moveSnake()
@@ -50,3 +48,9 @@ the game with a few turns as possible.
     - returns a pair which is randomly selected within the board.
   - setNewApple()
     - Sets apple to a position which is not equal to the snake.
+ 
+ ### UserInput
+ - getUserInput()
+     - Reads input from user and updates dir variable.
+ - getDirection()
+    - Return Direction

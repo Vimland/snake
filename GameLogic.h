@@ -1,6 +1,8 @@
 #ifndef GAMELOGIC_H
 #define GAMELOGIC_H
 
+#include "UserInput.h"
+#include "enums.h"
 #include <vector>
 #include <stdlib.h>
 #include <time.h>
@@ -20,11 +22,12 @@ class GameLogic {
   GameLogic(int x);
 
   void paint();
-  void moveSnake();
-  void nextStep(std::pair<int,int> step);
+  void moveSnake(std::pair<int, int> newHead);
+  void nextStep(std::pair<int, int> nextStep);
   void updateBoard();
   void setNewApple();
   std::pair<int, int> getRandomCoord();
+  std::pair<int, int> getNextStep(Direction dir); 
 
 };
 #endif
