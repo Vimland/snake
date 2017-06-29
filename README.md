@@ -1,9 +1,8 @@
 # Snake Game and AI
 
-This is a small project with the goal of improving my c++ skills and learn about creating AI.  
+This is a small project with the goal of improving my c++ skills and learn about creating an efficient AI.  
 First I'm implementing an fully functional snake game then I will work on an AI which finishes
 the game with a few turns as possible. 
-
 
 
 * Main Tasks:
@@ -14,9 +13,8 @@ the game with a few turns as possible.
 
 
 * ToDo:
-    - Append length to snake when apple is eaten
-    - Insert timer
-    - What happends if apple spawns behind head?
+    - Start building the AI
+    - Clean code..
 
 * Flow chart:
     - Call constructor
