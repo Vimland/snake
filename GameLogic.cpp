@@ -21,10 +21,6 @@ GameLogic::GameLogic(int x){
 }
 
 void GameLogic::setNewApple(){
-    for(int i = 0; i < snake.size(); i++)
-    {
-        board.at(snake.at(i).first).at(snake.at(i).second) = "+";
-    }
     std::pair<int, int> potentialApple = getRandomCoord();
     while(board.at(potentialApple.first).at(potentialApple.second) == "+"){
         potentialApple = getRandomCoord();
@@ -42,7 +38,7 @@ void GameLogic::paint(){
      }
 }
 
-// Generates aple ToDo rework generate a new pair within board.
+// Generates apple ToDo rework generate a new pair within board.
 std::pair<int, int> GameLogic::getRandomCoord(){
     int first = rand() % (size-2)+1;
     int second = rand() % (size-2)+1;
@@ -64,13 +60,14 @@ void GameLogic::updateBoard(){
             }
       }
 
-// Insert apple to board
-    board.at(apple.first).at(apple.second) = "0"; 
-
 // Insert snake to board
         for(int i = 0; i < snake.size(); i++){
             board.at(snake.at(i).first).at(snake.at(i).second) = "+";   
      }
+
+// Insert apple to board
+    board.at(apple.first).at(apple.second) = "0"; 
+
 }
 
 // ToDO Update snake position after each iteration
